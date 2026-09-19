@@ -1,0 +1,43 @@
+@page
+<!-- Login Page -->
+<!-- Summary:
+    This is the login page of the application.
+-->
+
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title data-i18n="global.login">Đăng nhập</title>
+        <link rel="stylesheet" href="~/css/LoginBranch.css"/>
+        <link rel="stylesheet" href="~/css/Login.css"/>
+        <script src="~/js/login.js" defer></script>
+    </head>
+    <body>
+        @{
+            if (System.IO.File.Exists("Pages/Shared/_DevTool.cshtml"))
+            {
+                await Html.RenderPartialAsync("_DevTool");
+            }
+        }
+        <div class="login-card">
+            <h2 data-i18n="global.login">Đăng nhập</h2>
+            <form method="post" action="/Login">
+                <label for="username" data-i18n="global.username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" required/>
+                <label for="password" data-i18n="global.password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required/>
+                <button type="submit" data-i18n="global.login">Đăng nhập</button>
+            </form>
+            <hr>
+            <p data-i18n="login.or-login-with">Hoặc đăng nhập với</p>
+            <div class="other-login-button-container">
+                <button class="other-login-button google-login" data-i18n="login.google-login">Google
+                    <img src="~/images/GoogleIcon.webp" class="login-button-logo"/>
+                </button>
+                <button class="other-login-button facebook-login" data-i18n="login.facebook-login">Facebook</button>
+            </div>
+        </div>
+    </body>
+</html>
