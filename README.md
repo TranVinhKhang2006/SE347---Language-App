@@ -1,1 +1,84 @@
-# SE347---Language-App
+# SE347 Web Application
+
+> Tài liệu kỹ thuật tổng quan về kiến trúc hệ thống, quy trình xử lý dữ liệu và môi trường phát triển của ứng dụng web SE347.
+
+## Mục lục
+
+- [Công nghệ sử dụng](#công-nghệ-sử-dụng)
+- [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+- [Luồng xử lý và giải pháp kỹ thuật](#luồng-xử-lý-và-giải-pháp-kỹ-thuật)
+- [DevTools](#devtools)
+- [Chạy dự án](#chạy-dự-án)
+
+## Công nghệ sử dụng
+
+- **Backend:** ASP.NET Core Razor Pages trên .NET 9.
+- **Database và ORM:** Entity Framework Core, định hướng Code First.
+- **Frontend:** HTML5, CSS3 và JavaScript ES6+.
+- **Quản lý mã nguồn:** Git.
+
+## Cấu trúc thư mục
+
+```text
+SE347/
+├── Data/                         # DbContext và cấu hình dữ liệu
+├── DTOs/                         # Data Transfer Objects
+├── Models/                       # Các entity của hệ thống
+├── Pages/                        # Razor Pages và giao diện người dùng
+│   ├── Account/                  # Đăng nhập, đăng ký, hồ sơ và xác thực
+│   └── Shared/                   # Thành phần giao diện dùng chung
+├── Services/                     # Xử lý nghiệp vụ chính
+├── Storage/                      # Tệp lưu trữ riêng tư
+├── wwwroot/                      # Tài nguyên tĩnh công khai
+│   ├── css/                      # Stylesheet theo từng màn hình
+│   ├── Images/                   # Hình ảnh giao diện
+│   └── js/                       # JavaScript theo từng màn hình
+├── Program.cs                    # Điểm khởi động và cấu hình ứng dụng
+└── SE347.csproj                  # Tệp cấu hình dự án
+```
+
+## Luồng xử lý và giải pháp kỹ thuật
+
+### Xác thực và giao diện
+
+Các trang đăng nhập, đăng ký, quên mật khẩu và hồ sơ được tổ chức trong `Pages/Account`. Các thành phần dùng chung được đặt trong `Pages/Shared` để giữ giao diện nhất quán giữa các trang.
+
+### Tạo bài kiểm tra và chấm điểm
+
+- Dữ liệu được tổ chức theo quan hệ phân cấp giữa bộ đề, câu hỏi và các lựa chọn.
+- Trình duyệt chỉ nhận nội dung câu hỏi và các lựa chọn, không nhận thông tin đáp án đúng.
+- Logic chấm điểm và tính kết quả được xử lý tập trung ở backend.
+- Các thao tác tạo hoặc cập nhật dữ liệu phức tạp nên được thực hiện trong database transaction để bảo đảm tính toàn vẹn.
+
+### Quản lý tệp và truy cập bảo mật
+
+- **Tài nguyên công khai:** Đặt trong `wwwroot` và có thể được phục vụ trực tiếp bởi ứng dụng.
+- **Tài nguyên riêng tư:** Đặt trong `Storage`, nằm ngoài phạm vi tài nguyên tĩnh công khai.
+- Tệp riêng tư chỉ nên được phân phối qua endpoint trung gian sau khi hệ thống xác thực và kiểm tra quyền truy cập.
+- Tệp tải lên cần được kiểm tra định dạng, giới hạn dung lượng và đặt tên lưu trữ an toàn để tránh ghi đè hoặc khai thác đường dẫn.
+
+## DevTools
+
+Ứng dụng có thành phần DevTools dành cho môi trường phát triển cục bộ:
+
+- Truy cập nhanh giữa các trang.
+- Theo dõi nhật ký thao tác và các request HTTP.
+- Lưu trạng thái nhật ký bằng `localStorage` khi điều hướng giữa các trang.
+- Chỉ hiển thị khi thành phần tương ứng tồn tại và ứng dụng đang chạy trong môi trường phát triển.
+
+## Chạy dự án
+
+### Yêu cầu
+
+- .NET SDK 9.0.
+- Một hệ quản trị cơ sở dữ liệu được cấu hình trong ứng dụng.
+
+### Khởi động
+
+```bash
+dotnet restore
+dotnet build
+dotnet run
+```
+
+Sau khi ứng dụng khởi động, mở URL được hiển thị trong terminal bằng trình duyệt.
