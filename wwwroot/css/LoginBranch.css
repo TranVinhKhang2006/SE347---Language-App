@@ -1,0 +1,31 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+
+    .login-card {
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 0.35rem;
+            color: #304766;
+            font-size: 0.95rem;
+        }
+
+        button {
+            border: 0;
+            border-radius: 8px;
+            background: #2563eb;
+            color: #fff;
+        }
+    }
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}

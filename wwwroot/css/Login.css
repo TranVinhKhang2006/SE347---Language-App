@@ -1,0 +1,100 @@
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #eef4ff;
+
+    .login-card {
+        box-sizing: border-box;
+        width: min(92vw, 420px);
+        padding: 2rem;
+        border: 1px solid #dbe5f5;
+        border-radius: 16px;
+        background: #ffffff;
+        box-shadow: 0 18px 45px rgb(28 57 99 / 14%);
+
+        h2 {
+            margin: 0 0 1.5rem;
+            color: #17345f;
+            text-align: center;
+        }
+
+        form {
+            gap: 0.55rem;
+
+            > button {
+                min-height: 44px;
+                padding: 0.65rem 1rem;
+                cursor: pointer;
+                font-weight: 700;
+
+                &:hover {
+                    filter: brightness(0.94);
+                }
+            }
+        }
+
+        input {
+            box-sizing: border-box;
+            min-height: 44px;
+            padding: 0.65rem 0.8rem;
+            border: 1px solid #b9c9e2;
+            border-radius: 8px;
+            color: #17345f;
+            background: #f8fbff;
+
+            &:focus {
+                outline: 3px solid rgb(37 99 235 / 18%);
+                border-color: #2563eb;
+            }
+        }
+
+        hr {
+            height: 1px;
+            margin: 1.5rem 0 1rem;
+            background: #dbe5f5;
+        }
+
+        > p {
+            margin: 0 0 0.8rem;
+            color: #526581;
+            text-align: center;
+        }
+    }
+
+    .other-login-button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .other-login-button {
+        min-height: 44px;
+        cursor: pointer;
+        border: 0;
+        border-radius: 8px;
+        background: #fff;
+        color: #17345f;
+        font-weight: 700;
+        position: relative;
+
+        &:hover {
+            filter: brightness(0.94);
+        }
+
+        img {
+            position: absolute;
+            right: 1rem;
+            top: auto;
+            bottom: auto;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .login-message {
+        margin-top: 1rem;
+        color: #b42318;
+        text-align: center;
+    }
+}
