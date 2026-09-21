@@ -13,6 +13,7 @@
 - **Backend:** ASP.NET Core Razor Pages trên .NET 9.
 - **Database và ORM:** Entity Framework Core, định hướng Code First.
 - **Frontend:** HTML5, CSS3 và JavaScript ES6+.
+  + *Framework:* Vue 3 CDN
 - **Quản lý mã nguồn:** Git.
 
 ## Cấu trúc thư mục
