@@ -1,7 +1,5 @@
 # SE347 Web Application
 
-> Tài liệu kỹ thuật tổng quan về kiến trúc hệ thống, quy trình xử lý dữ liệu và môi trường phát triển của ứng dụng web SE347.
-
 ## Mục lục
 
 - [Công nghệ sử dụng](#công-nghệ-sử-dụng)
