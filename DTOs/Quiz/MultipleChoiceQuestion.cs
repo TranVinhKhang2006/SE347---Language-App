@@ -6,3 +6,4 @@ namespace DTOs.Quiz
         public List<int> CorrectAnswerIds { get; set; } = new();
     }
 }
+}
