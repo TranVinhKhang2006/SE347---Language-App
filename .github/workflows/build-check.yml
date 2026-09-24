@@ -1,8 +1,6 @@
 name: .NET Build Check
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -11,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
+    - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
+    - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
-    - name: Restore Dependencies
-      run: dotnet restore
+    - name: Restore dependencies
+      run: dotnet restore SE347.csproj
 
-    - name: Build Project
-      run: dotnet build --no-restore --configuration Release
+    - name: Build project
+      run: dotnet build SE347.csproj --no-restore --configuration Release
