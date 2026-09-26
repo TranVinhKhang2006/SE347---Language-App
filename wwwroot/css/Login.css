@@ -98,3 +98,14 @@ body {
         text-align: center;
     }
 }
+
+body { color: #513b22; background: #fffaf2; }
+body .login-card { border-color: #eadfcf; background: #fff; box-shadow: 0 18px 45px rgb(105 75 31 / 12%); }
+body .login-card h2 { color: #513b22; }
+body .login-card input { border-color: #d9c5a7; color: #513b22; background: #fffdf9; }
+body .login-card input:focus { outline-color: rgb(216 137 32 / 20%); border-color: #d88920; }
+body .login-card form > button, body .login-card button { color: #fffaf2; background: #d88920; }
+body .login-card form > button:hover, body .login-card button:hover { background: #b56a16; }
+body .login-card hr { background: #eadfcf; }
+body .login-card > p { color: #806b50; }
+body .other-login-button { border: 1px solid #eadfcf; color: #513b22; background: #fff; }
