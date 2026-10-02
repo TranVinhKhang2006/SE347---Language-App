@@ -77,7 +77,7 @@ Các trang đăng nhập, đăng ký, quên mật khẩu và hồ sơ được t
 ```bash
 dotnet restore
 dotnet build
-dotnet run
+dotnet run (hoặc dotnet watch)
 ```
 
 Sau khi ứng dụng khởi động, mở URL được hiển thị trong terminal bằng trình duyệt.

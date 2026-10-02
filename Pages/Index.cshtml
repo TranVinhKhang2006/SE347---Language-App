@@ -14,5 +14,54 @@
         <script src="~/js/index.js" defer></script>
     </head>
     <body>
+        <main class="home-page">
+            <header class="home-header">
+                <a class="home-brand" href="/Index">Duolingo Mockup</a>
+                <nav class="home-nav" aria-label="Điều hướng chính">
+                    <a class="home-nav__active" href="/Index">Trang chủ</a>
+                    <a href="/Study">Học tập</a>
+                    <a href="/TrialTest">Làm bài thử</a>
+                    <a href="/Ranking">Xếp hạng</a>
+                </nav>
+                <a class="home-account" href="/Account/Profile">Hồ sơ</a>
+            </header>
+
+            <section class="home-hero" aria-labelledby="home-title">
+                <div class="home-hero__content">
+                    <p class="home-eyebrow">Chào mừng bạn trở lại</p>
+                    <h1 id="home-title">Mỗi ngày một bước gần hơn đến mục tiêu.</h1>
+                    <p>Học từ vựng, luyện ngữ pháp và kiểm tra tiến độ trong một không gian học tập rõ ràng.</p>
+                    <div class="home-actions">
+                        <a class="home-button home-button--primary" href="/Study">Bắt đầu học</a>
+                        <a class="home-button home-button--secondary" href="/TrialTest">Làm bài thử</a>
+                    </div>
+                </div>
+                <div class="home-hero__visual" aria-label="Tiến độ học tập hiện tại">
+                    <div class="home-progress-ring"><strong>68%</strong><span>tiến độ</span></div>
+                    <div class="home-streak"><strong>12</strong><span>ngày liên tục</span></div>
+                </div>
+            </section>
+
+            <section class="home-section" aria-labelledby="home-continue-title">
+                <div class="home-section__heading">
+                    <div><p class="home-eyebrow">Lộ trình của bạn</p><h2 id="home-continue-title">Tiếp tục học</h2></div>
+                    <a href="/Study">Xem tất cả &#8594;</a>
+                </div>
+                <div class="home-course-grid">
+                    <a class="home-course-card home-course-card--blue" href="/Study">
+                        <span class="home-course-card__icon">A1</span><span class="home-course-card__level">Cơ bản</span>
+                        <strong>Từ vựng hằng ngày</strong><span>12 bài học &#183; 35 phút</span>
+                    </a>
+                    <a class="home-course-card home-course-card--green" href="/Study">
+                        <span class="home-course-card__icon">G</span><span class="home-course-card__level">Luyện tập</span>
+                        <strong>Ngữ pháp nền tảng</strong><span>8 bài học &#183; 25 phút</span>
+                    </a>
+                    <a class="home-course-card home-course-card--orange" href="/TrialTest">
+                        <span class="home-course-card__icon">&#9733;</span><span class="home-course-card__level">Thử thách</span>
+                        <strong>Kiểm tra tổng hợp</strong><span>20 câu hỏi &#183; 15 phút</span>
+                    </a>
+                </div>
+            </section>
+        </main>
     </body>
 </html>

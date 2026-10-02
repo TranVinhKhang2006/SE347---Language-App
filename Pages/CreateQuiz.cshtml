@@ -9,5 +9,13 @@
 		<script src="~/js/createquiz.js" defer></script>
 	</head>
 	<body>
+		<main class="create-quiz-page">
+			<header class="create-quiz-header"><div><a class="create-quiz-brand" href="/Index">Duolingo Mockup</a><p class="create-quiz-eyebrow">Công cụ biên soạn</p><h1>Tạo bài kiểm tra</h1><p>Tạo nội dung luyện tập của riêng bạn.</p></div><a class="create-quiz-back" href="/Index">Quay lại trang chủ</a></header>
+			<form class="quiz-builder" action="#" method="post">
+				<section class="quiz-builder__details"><div class="quiz-section-heading"><div><p class="create-quiz-eyebrow">Bước 1</p><h2>Thông tin bộ đề</h2></div><span>Chưa lưu</span></div><div class="quiz-form-grid"><label>Tên bài kiểm tra<input type="text" name="quizTitle" placeholder="Ví dụ: Từ vựng giao tiếp" required></label><label>Chủ đề<select name="quizTopic"><option>Từ vựng</option><option>Ngữ pháp</option><option>Nghe hiểu</option></select></label><label class="quiz-form-grid__wide">Mô tả<textarea name="quizDescription" rows="3" placeholder="Mô tả ngắn về bài kiểm tra"></textarea></label></div></section>
+				<section class="quiz-builder__questions"><div class="quiz-section-heading"><div><p class="create-quiz-eyebrow">Bước 2</p><h2>Câu hỏi</h2></div><span>1 / 10</span></div><article class="quiz-question"><div class="quiz-question__heading"><strong>Câu hỏi 01</strong><button type="button" aria-label="Xóa câu hỏi">Xóa</button></div><label>Nội dung câu hỏi<textarea name="question1" rows="3" placeholder="Nhập nội dung câu hỏi..." required></textarea></label><div class="quiz-answers"><label><span class="quiz-answer-key">A</span><input type="text" name="answerA" placeholder="Đáp án A" required><input type="radio" name="correctAnswer" value="A" aria-label="Chọn đáp án A"></label><label><span class="quiz-answer-key">B</span><input type="text" name="answerB" placeholder="Đáp án B" required><input type="radio" name="correctAnswer" value="B" aria-label="Chọn đáp án B"></label><label><span class="quiz-answer-key">C</span><input type="text" name="answerC" placeholder="Đáp án C" required><input type="radio" name="correctAnswer" value="C" aria-label="Chọn đáp án C"></label><label><span class="quiz-answer-key">D</span><input type="text" name="answerD" placeholder="Đáp án D" required><input type="radio" name="correctAnswer" value="D" aria-label="Chọn đáp án D"></label></div></article><button class="quiz-add-question" type="button">+ Thêm câu hỏi</button></section>
+				<footer class="quiz-builder__actions"><a href="/Index">Hủy</a><button class="quiz-save-button" type="submit">Lưu bài kiểm tra</button></footer>
+			</form>
+		</main>
 	</body>
 </html>

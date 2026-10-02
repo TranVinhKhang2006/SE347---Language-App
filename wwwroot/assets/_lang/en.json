@@ -1,0 +1,22 @@
+{
+    "app_name": "Oxford 3000 Language App",
+    "nav_home": "Home",
+    "nav_lessons": "Lessons",
+    "nav_profile": "Profile",
+    "nav_logout": "Log Out",
+    "auth_login_title": "Welcome Back",
+    "auth_login_subtitle": "Log in to continue your learning journey",
+    "auth_email_label": "Email Address",
+    "auth_password_label": "Password",
+    "auth_btn_login": "Sign In",
+    "auth_btn_register": "Create Account",
+    "auth_forgot_password": "Forgot Password?",
+    "auth_register_title": "Start Learning Today",
+    "auth_fullname_label": "Full Name",
+    "auth_confirm_password": "Confirm Password",
+    "dashboard_daily_streak": "Daily Streak",
+    "dashboard_words_learned": "Words Mastered",
+    "dashboard_start_lesson": "Continue Learning",
+    "theme_toggle": "Switch Theme",
+    "lang_toggle": "Language"
+}

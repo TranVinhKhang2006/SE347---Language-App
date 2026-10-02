@@ -29,3 +29,8 @@ body {
 *::after {
     box-sizing: inherit;
 }
+
+body { color: #513b22; background: #fffaf2; }
+body .login-card label { color: #806b50; }
+body .login-card button { color: #fffaf2; background: #d88920; }
+body .login-card button:hover { background: #b56a16; }

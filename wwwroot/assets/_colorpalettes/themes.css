@@ -1,0 +1,46 @@
+/* Color Palette & CSS Variables for Theme Management */
+:root {
+    /* Default Light Mode */
+    --bg-main: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-accent: #38bdf8;
+
+    --status-success: #16a34a;
+    --status-error: #dc2626;
+    --status-warning: #ca8a04;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Dark Mode Palette */
+[data-theme="dark"] {
+    --bg-main: #0b0f19;
+    --bg-surface: #111827;
+    --bg-card: #1f2937;
+    --border-color: #374151;
+
+    --text-primary: #f9fafb;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+    --color-accent: #0ea5e9;
+
+    --status-success: #22c55e;
+    --status-error: #ef4444;
+    --status-warning: #eab308;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+}
