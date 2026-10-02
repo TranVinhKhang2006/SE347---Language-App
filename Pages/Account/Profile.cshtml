@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Hồ sơ</title>
 		<link rel="stylesheet" href="~/css/Profile.css"/>
+		<script src="~/js/auth-guard.js" defer></script>
 		<script src="~/js/profile.js" defer></script>
 	</head>
 	<body>
@@ -17,7 +18,7 @@
 					<a href="/Study">Học tập</a>
 					<a class="profile-nav__active" href="/Account/Profile" aria-current="page">Hồ sơ</a>
 				</nav>
-				<a class="profile-logout" href="/Account/Login">Đăng xuất</a>
+				<a class="profile-logout" href="/Account/Login?logout=1">Đăng xuất</a>
 			</header>
 
 			<section class="profile-hero" aria-labelledby="profile-title">

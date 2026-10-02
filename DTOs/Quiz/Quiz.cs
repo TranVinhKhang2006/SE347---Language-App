@@ -17,4 +17,3 @@ namespace DTOs.Quiz
         public List<string> Questions { get; set; } = new List<string>();
     }
 }
-}

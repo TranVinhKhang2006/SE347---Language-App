@@ -97,6 +97,44 @@ body {
         color: #b42318;
         text-align: center;
     }
+
+    .account-switch {
+        margin: 1.25rem 0 0;
+        color: #806b50;
+        text-align: center;
+        font-size: .88rem;
+    }
+
+    .account-switch a {
+        color: #b56a16;
+        font-weight: 800;
+    }
+
+    .login-actions {
+        display: grid;
+        gap: 10px;
+        margin-top: 1.25rem;
+    }
+
+    .login-action-button {
+        display: inline-flex;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #eadfcf;
+        border-radius: 8px;
+        font-weight: 800;
+    }
+
+    .login-action-button--primary {
+        color: #fffaf2;
+        background: #d88920;
+    }
+
+    .login-action-button--secondary {
+        color: #b56a16;
+        background: #fffdf9;
+    }
 }
 
 body { color: #513b22; background: #fffaf2; }
@@ -109,3 +147,31 @@ body .login-card form > button:hover, body .login-card button:hover { background
 body .login-card hr { background: #eadfcf; }
 body .login-card > p { color: #806b50; }
 body .other-login-button { border: 1px solid #eadfcf; color: #513b22; background: #fff; }
+
+body .login-actions {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+body .login-action-button {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eadfcf;
+    border-radius: 8px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+body .login-action-button--primary {
+    color: #fffaf2;
+    background: #d88920;
+}
+
+body .login-action-button--secondary {
+    color: #b56a16;
+    background: #fffdf9;
+}

@@ -16,3 +16,4 @@ body { color: #513b22; background: #fffaf2; }
 .account-form input:focus { outline-color: rgb(216 137 32 / 20%); border-color: #d88920; }
 .account-form button { color: #fffaf2; background: #d88920; }
 .account-form button:hover { background: #b56a16; }
+.form-message { margin: 1rem 0 0; color: #b42318; text-align: center; font-size: .88rem; }
