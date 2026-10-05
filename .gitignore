@@ -4,3 +4,8 @@
 x64/
 [Bb]in/
 [Oo]bj/
+
+# Supabase CLI
+supabase/.temp/
+supabase/.branches/
+.env
