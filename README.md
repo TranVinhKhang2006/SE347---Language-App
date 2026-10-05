@@ -10,7 +10,7 @@
 
 ## Công nghệ sử dụng
 
-- **Backend:** ASP.NET Core Razor Pages trên .NET 9.
+- **Backend:** ASP.NET Core Razor Pages trên .NET 10 (LTS).
 - **Database và ORM:** Entity Framework Core, định hướng Code First.
 - **Frontend:** HTML5, CSS3 và JavaScript ES6+.
   + *Framework:* Vue 3 CDN
@@ -69,7 +69,7 @@ Các trang đăng nhập, đăng ký, quên mật khẩu và hồ sơ được t
 
 ### Yêu cầu
 
-- .NET SDK 9.0.
+- .NET SDK 10.0.
 - Một hệ quản trị cơ sở dữ liệu được cấu hình trong ứng dụng.
 
 ### Khởi động
