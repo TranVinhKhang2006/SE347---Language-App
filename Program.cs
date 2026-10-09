@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SE347.Data;
+using SE347.Endpoints;
+using SE347.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Supabase");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// Services nghiệp vụ (Services/)
+builder.Services.AddScoped<IUserService, UserService>();
+
 // 1. Kích hoạt tính năng đọc và render file .cshtml (SSR)
 builder.Services.AddRazorPages();
 
@@ -97,6 +103,9 @@ app.Use(async (context, next) =>
 
 // 3. Tự động ánh xạ đường dẫn URL tới các file trong thư mục Pages
 app.MapRazorPages();
+
+// 4. Endpoint JSON /api/* cho frontend Vue 3 (Endpoints/)
+app.MapUserEndpoints();
 
 // Kích hoạt Server chạy
 app.Run();

@@ -1,4 +1,4 @@
-namespace DTOs.Quiz
+namespace SE347.DTOs.Quiz
 {
     public abstract class BaseQuestion
     {
