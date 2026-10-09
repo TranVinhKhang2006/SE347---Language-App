@@ -3,6 +3,11 @@ using SE347.Models;
 
 namespace SE347.Data
 {
+    /// <summary>
+    /// Schema các bảng do supabase/migrations quản lý (trigger, RLS, seed nằm ở file SQL).
+    /// EF Core chỉ map vào bảng có sẵn: mọi bảng đều ExcludeFromMigrations,
+    /// KHÔNG chạy `dotnet ef migrations add` / `database update` cho các bảng này.
+    /// </summary>
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -34,7 +39,6 @@ namespace SE347.Data
             ConfigureUserDailyActivity(modelBuilder);
             ConfigureAchievement(modelBuilder);
             ConfigureUserAchievement(modelBuilder);
-            SeedAchievements(modelBuilder);
         }
 
         // ─────────────────────────────────────────────────────────────
@@ -47,6 +51,8 @@ namespace SE347.Data
                 // ── Table & check constraints ────────────────────────
                 entity.ToTable("profiles", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_profiles_username",
                         "username ~ '^[a-z0-9][a-z0-9._]{1,28}[a-z0-9]$' AND username !~ '[._]{2}'");
 
@@ -171,6 +177,8 @@ namespace SE347.Data
             {
                 entity.ToTable("user_settings", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_settings_theme",
                         "theme IN ('light', 'dark', 'system')");
 
@@ -190,8 +198,8 @@ namespace SE347.Data
                 entity.Property(e => e.DailyGoalXp)
                       .HasDefaultValue((short)20);
 
-                entity.Property(e => e.SoundEnabled)
-                      .HasDefaultValue(true);
+                // SoundEnabled không khai báo HasDefaultValue(true): EF sẽ bỏ qua giá trị false
+                // khi INSERT và DB tự điền true. Default nằm ở initializer của UserSetting.
 
                 entity.Property(e => e.ReminderEnabled)
                       .HasDefaultValue(false);
@@ -210,6 +218,8 @@ namespace SE347.Data
             {
                 entity.ToTable("user_learning_profiles", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_learning_reason",
                         "learning_reason IS NULL OR learning_reason IN ('travel', 'work', 'school', 'exam', 'fun', 'other')");
 
@@ -236,6 +246,8 @@ namespace SE347.Data
             {
                 entity.ToTable("user_stats", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_stats_xp",
                         "total_xp >= 0");
 
@@ -275,6 +287,8 @@ namespace SE347.Data
             {
                 entity.ToTable("user_daily_activity", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_daily_non_negative",
                         "xp_earned >= 0 AND lessons_completed >= 0 AND words_learned >= 0 AND practice_seconds >= 0");
                 });
@@ -312,6 +326,8 @@ namespace SE347.Data
             {
                 entity.ToTable("achievements", tb =>
                 {
+                    tb.ExcludeFromMigrations();
+
                     tb.HasCheckConstraint("ck_achievements_category",
                         "category IN ('streak', 'xp', 'lesson', 'vocab', 'quiz', 'exam')");
 
@@ -346,7 +362,7 @@ namespace SE347.Data
         {
             modelBuilder.Entity<UserAchievement>(entity =>
             {
-                entity.ToTable("user_achievements");
+                entity.ToTable("user_achievements", tb => tb.ExcludeFromMigrations());
 
                 // Composite PK
                 entity.HasKey(e => new { e.UserId, e.AchievementCode });
@@ -354,85 +370,6 @@ namespace SE347.Data
                 entity.Property(e => e.AwardedAt)
                       .HasDefaultValueSql("now()");
             });
-        }
-
-        // ─────────────────────────────────────────────────────────────
-        // Seed data  
-        // ─────────────────────────────────────────────────────────────
-        private static void SeedAchievements(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Achievement>().HasData(
-                new Achievement
-                {
-                    Code = "first_lesson", Category = "lesson", Threshold = 1,
-                    NameVi = "Bước đầu tiên", NameEn = "First Step",
-                    DescriptionVi = "Hoàn thành bài học đầu tiên", DescriptionEn = "Complete your first lesson",
-                    XpReward = 10, SortOrder = 1
-                },
-                new Achievement
-                {
-                    Code = "streak_3", Category = "streak", Threshold = 3,
-                    NameVi = "Khởi động", NameEn = "Warming Up",
-                    DescriptionVi = "Học 3 ngày liên tiếp", DescriptionEn = "Reach a 3-day streak",
-                    XpReward = 10, SortOrder = 2
-                },
-                new Achievement
-                {
-                    Code = "streak_7", Category = "streak", Threshold = 7,
-                    NameVi = "Một tuần", NameEn = "One Week",
-                    DescriptionVi = "Học 7 ngày liên tiếp", DescriptionEn = "Reach a 7-day streak",
-                    XpReward = 20, SortOrder = 3
-                },
-                new Achievement
-                {
-                    Code = "streak_30", Category = "streak", Threshold = 30,
-                    NameVi = "Bền bỉ", NameEn = "Unstoppable",
-                    DescriptionVi = "Học 30 ngày liên tiếp", DescriptionEn = "Reach a 30-day streak",
-                    XpReward = 50, SortOrder = 4
-                },
-                new Achievement
-                {
-                    Code = "xp_100", Category = "xp", Threshold = 100,
-                    NameVi = "Tập sự", NameEn = "Apprentice",
-                    DescriptionVi = "Đạt 100 XP", DescriptionEn = "Earn 100 XP",
-                    XpReward = 0, SortOrder = 5
-                },
-                new Achievement
-                {
-                    Code = "xp_1000", Category = "xp", Threshold = 1000,
-                    NameVi = "Chăm chỉ", NameEn = "Hard Worker",
-                    DescriptionVi = "Đạt 1.000 XP", DescriptionEn = "Earn 1,000 XP",
-                    XpReward = 0, SortOrder = 6
-                },
-                new Achievement
-                {
-                    Code = "words_100", Category = "vocab", Threshold = 100,
-                    NameVi = "100 từ đầu tiên", NameEn = "First 100 Words",
-                    DescriptionVi = "Học 100 từ vựng", DescriptionEn = "Learn 100 words",
-                    XpReward = 20, SortOrder = 7
-                },
-                new Achievement
-                {
-                    Code = "words_500", Category = "vocab", Threshold = 500,
-                    NameVi = "Kho từ vựng", NameEn = "Word Collector",
-                    DescriptionVi = "Học 500 từ vựng", DescriptionEn = "Learn 500 words",
-                    XpReward = 50, SortOrder = 8
-                },
-                new Achievement
-                {
-                    Code = "perfect_quiz", Category = "quiz", Threshold = 1,
-                    NameVi = "Không sai câu nào", NameEn = "Flawless",
-                    DescriptionVi = "Làm đúng 100% một bài quiz", DescriptionEn = "Score 100% on a quiz",
-                    XpReward = 10, SortOrder = 9
-                },
-                new Achievement
-                {
-                    Code = "first_exam", Category = "exam", Threshold = 1,
-                    NameVi = "Thí sinh", NameEn = "Test Taker",
-                    DescriptionVi = "Hoàn thành bài thi thử đầu tiên", DescriptionEn = "Finish your first mock exam",
-                    XpReward = 20, SortOrder = 10
-                }
-            );
         }
 
         // =================================================================
