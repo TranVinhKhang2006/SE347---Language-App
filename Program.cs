@@ -1,5 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using SE347.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
+// Kết nối Supabase PostgreSQL
+var connectionString = builder.Configuration.GetConnectionString("Supabase");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(connectionString));
 // 1. Kích hoạt tính năng đọc và render file .cshtml (SSR)
 builder.Services.AddRazorPages();
 
