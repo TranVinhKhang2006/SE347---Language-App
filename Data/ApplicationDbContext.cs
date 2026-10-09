@@ -20,15 +20,11 @@ namespace SE347.Data
         public DbSet<Achievement> Achievements { get; set; } = null!;
         public DbSet<UserAchievement> UserAchievements { get; set; } = null!;
 
-        // =================================================================
-        // OnModelCreating — Fluent API toàn bộ cấu hình Code-First
-        // =================================================================
-
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Tất cả bảng nằm trong schema "public" (mặc định PostgreSQL).
             modelBuilder.HasDefaultSchema("public");
 
             ConfigureProfile(modelBuilder);
@@ -361,7 +357,7 @@ namespace SE347.Data
         }
 
         // ─────────────────────────────────────────────────────────────
-        // Seed data — huy hiệu mặc định
+        // Seed data  
         // ─────────────────────────────────────────────────────────────
         private static void SeedAchievements(ModelBuilder modelBuilder)
         {
@@ -440,8 +436,7 @@ namespace SE347.Data
         }
 
         // =================================================================
-        // SaveChanges — tự động gán created_at, updated_at, row_version
-        // (thay thế trigger SQL trong mô hình Code-First)
+        // SaveChanges 
         // =================================================================
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -458,10 +453,9 @@ namespace SE347.Data
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
-        /// <summary>
+        /// 
         /// Gán timestamp và row_version trước khi lưu, thay thế
-        /// các trigger set_updated_at() và profiles_before_write() trong SQL.
-        /// </summary>
+        /// 
         private void OnBeforeSaving()
         {
             var now = DateTimeOffset.UtcNow;

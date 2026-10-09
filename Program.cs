@@ -3,7 +3,7 @@ using SE347.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Kết nối Supabase PostgreSQL
+// Kết nối Supabase 
 var connectionString = builder.Configuration.GetConnectionString("Supabase");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
