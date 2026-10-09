@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using SE347.Auth;
 using SE347.DTOs.Users;
 using SE347.Services;
 
@@ -26,14 +28,25 @@ namespace SE347.Endpoints
                 return Results.Ok(new UsernameAvailabilityDto(username, available));
             });
 
+            // GET /api/users/me: hồ sơ của user đang đăng nhập (cần Bearer token của Supabase)
+            group.MapGet("/me", async (ClaimsPrincipal user, IUserService users, CancellationToken ct) =>
+            {
+                if (user.GetUserId() is not Guid userId)
+                {
+                    return Results.Unauthorized();
+                }
+
+                var profile = await users.GetMyProfileAsync(userId, ct);
+                return profile is null ? Results.NotFound() : Results.Ok(profile);
+            })
+            .RequireAuthorization();
+
             // GET /api/users/{username}: hồ sơ công khai, 404 nếu không tồn tại hoặc đang để riêng tư
             group.MapGet("/{username}", async (string username, IUserService users, CancellationToken ct) =>
             {
                 var profile = await users.GetPublicProfileAsync(username, ct);
                 return profile is null ? Results.NotFound() : Results.Ok(profile);
             });
-
-            // TODO(auth): GET /api/users/me sau khi có xác thực bằng JWT của Supabase.
 
             return app;
         }

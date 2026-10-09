@@ -20,6 +20,7 @@
 
 ```text
 SE347/
+├── Auth/                         # Xác thực JWT của Supabase (issuer, audience, JWKS)
 ├── Data/                         # DbContext và cấu hình dữ liệu
 ├── DTOs/                         # Data Transfer Objects
 ├── Endpoints/                    # Minimal API JSON /api/* cho frontend Vue 3

@@ -40,5 +40,27 @@ namespace SE347.Services
                 .Select(p => new PublicProfileDto(p.Username, p.DisplayName, p.AvatarPath, p.Bio))
                 .SingleOrDefaultAsync(cancellationToken);
         }
+
+        /// <summary>
+        /// userId lấy từ claim "sub" của JWT đã xác thực. Hồ sơ đã xóa coi như không tồn tại.
+        /// </summary>
+        public async Task<MyProfileDto?> GetMyProfileAsync(Guid userId, CancellationToken cancellationToken = default)
+        {
+            return await _db.Profiles
+                .AsNoTracking()
+                .Where(p => p.Id == userId && p.Status != "deleted")
+                .Select(p => new MyProfileDto(
+                    p.Id,
+                    p.Username,
+                    p.DisplayName,
+                    p.AvatarPath,
+                    p.Bio,
+                    p.UiLocale,
+                    p.Timezone,
+                    p.ProfileVisibility,
+                    p.Role,
+                    p.OnboardingCompletedAt))
+                .SingleOrDefaultAsync(cancellationToken);
+        }
     }
 }

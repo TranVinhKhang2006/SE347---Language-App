@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SE347.Auth;
 using SE347.Data;
 using SE347.Endpoints;
 using SE347.Services;
@@ -9,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Supabase");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// Xác thực JWT của Supabase cho /api/* (Auth/)
+builder.Services.AddSupabaseJwtAuth(builder.Configuration);
 
 // Services nghiệp vụ (Services/)
 builder.Services.AddScoped<IUserService, UserService>();
@@ -22,6 +26,9 @@ var app = builder.Build();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Use(async (context, next) =>
 {

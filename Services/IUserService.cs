@@ -7,5 +7,7 @@ namespace SE347.Services
         Task<bool> IsUsernameAvailableAsync(string username, CancellationToken cancellationToken = default);
 
         Task<PublicProfileDto?> GetPublicProfileAsync(string username, CancellationToken cancellationToken = default);
+
+        Task<MyProfileDto?> GetMyProfileAsync(Guid userId, CancellationToken cancellationToken = default);
     }
 }
