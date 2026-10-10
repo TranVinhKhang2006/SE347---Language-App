@@ -59,7 +59,27 @@ namespace SE347.Services
                     p.Timezone,
                     p.ProfileVisibility,
                     p.Role,
-                    p.OnboardingCompletedAt))
+                    p.OnboardingCompletedAt,
+                    p.Setting == null ? null : new UserSettingDto(
+                        p.Setting.Theme,
+                        p.Setting.DailyGoalXp,
+                        p.Setting.SoundEnabled,
+                        p.Setting.ReminderEnabled,
+                        p.Setting.ReminderTime
+                    ),
+                    p.Stat == null ? null : new UserStatDto(
+                        p.Stat.TotalXp,
+                        p.Stat.CurrentStreak,
+                        p.Stat.LongestStreak,
+                        p.Stat.LastActivityDate,
+                        p.Stat.StreakFreezes
+                    ),
+                    p.LearningProfile == null ? null : new UserLearningProfileDto(
+                        p.LearningProfile.LearningReason,
+                        p.LearningProfile.CefrLevel,
+                        p.LearningProfile.PlacementCompletedAt
+                    )
+                ))
                 .SingleOrDefaultAsync(cancellationToken);
         }
     }

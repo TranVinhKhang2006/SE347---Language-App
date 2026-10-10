@@ -113,6 +113,7 @@ app.MapRazorPages();
 
 // 4. Endpoint JSON /api/* cho frontend Vue 3 (Endpoints/)
 app.MapUserEndpoints();
+app.MapHealthEndpoints();
 
 // Kích hoạt Server chạy
 app.Run();
