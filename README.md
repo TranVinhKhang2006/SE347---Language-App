@@ -28,6 +28,7 @@ SE347/
 │   └── Shared/                   # Thành phần giao diện dùng chung
 ├── Services/                     # Xử lý nghiệp vụ chính
 ├── Storage/                      # Tệp lưu trữ riêng tư
+├── supabase/migrations/          # SQL schema Supabase (bảng, trigger, RLS)
 ├── wwwroot/                      # Tài nguyên tĩnh công khai
 │   ├── css/                      # Stylesheet theo từng màn hình
 │   ├── Images/                   # Hình ảnh giao diện

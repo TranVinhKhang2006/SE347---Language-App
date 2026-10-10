@@ -4,3 +4,11 @@
 x64/
 [Bb]in/
 [Oo]bj/
+
+# Supabase CLI
+supabase/.temp/
+supabase/.branches/
+.env
+# Config chua key that (chi de local)
+appsettings.Development.json
+appsettings.*.local.json
